@@ -2,32 +2,27 @@
 	"schemaVersion": 1,
 	"id": "${modid}",
 	"version": "${version}",
-	"name": "MixinOnlyTemplate",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Spectral Utilities Fix Mod",
+	"description": "Fixes Spectral Utilities bugs",
 	"authors": [
-		"Me!"
+		"Linguardium"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/mixinonlytemplate/icon.png",
+	"license": "MIT",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-		],
-		"client": [
+		"mixinsquared": [
+          "mod.linguardium.spectralutilitiesfix.SpectralUtilitiesMixinCanceller"
 		]
 	},
 	"mixins": [
-		"mixinonlytemplate.mixins.json",
-		{
-			"config": "mixinonlytemplate.client.mixins.json",
-			"environment": "client"
-		}
+		"spectralutilitiesfix.mixins.json"
 	],
 	"depends": {
+		"specutils": "1.0.1",
 		"fabricloader": ">=${loader_version}",
 		"minecraft": "~${minecraft_version}",
 		"java": ">=17",

@@ -1,13 +1,14 @@
-package mod.template.mixinonlytemplate.mixin.client;
+package mod.linguardium.spectralutilitiesfix.mixin;
 
+import mod.linguardium.spectralutilitiesfix.Logging;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class ClientMixinPlugin implements IMixinConfigPlugin {
+public class CommonMixinPlugin implements IMixinConfigPlugin {
+
     @Override
     public void onLoad(String mixinPackage) {
 
@@ -35,11 +36,12 @@ public class ClientMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
     }
 
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-
+        if (mixinClassName.endsWith("Replacement")) {
+            Logging.print("Applied replacement mixin for "+mixinClassName.replaceAll(".*\\.","").replaceAll("Replacement$","")+" cancelled earlier");
+        }
     }
 }

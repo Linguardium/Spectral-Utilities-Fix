@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.4-SNAPSHOT'
+	id 'fabric-loom' version '1.6-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,18 +11,15 @@ base {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven { url "https://cursemaven.com" }
+	maven { url = "https://jitpack.io" }
 }
 
 loom {
     splitEnvironmentSourceSets()
 
 	mods {
-		"mixinonlytemplate" {
+		"spectrumutilitiesfix" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
@@ -38,11 +35,14 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+	include(implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${project.mixinsquared_version}")))
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}")))
+	// cloth config api, required by spectral-utilities
+	modCompileOnly "curse.maven:cloth-config-348521:${project.cloth_config_api_version}"
+	// Spectrum, required by spectral-utilities
+	modCompileOnly "curse.maven:spectrum-556967:${project.spectrum_version}"
+	// spectral utilities
+	modCompileOnly "curse.maven:spectral-utilities-976584:${project.spectralutilities_version}}"
 }
 
 processResources {

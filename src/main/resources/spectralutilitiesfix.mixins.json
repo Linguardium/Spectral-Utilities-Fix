@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "mod.linguardium.spectralutilitiesfix.mixin",
+	"plugin": "mod.linguardium.spectralutilitiesfix.mixin.CommonMixinPlugin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"JadeVineRootsBlockMixinReplacement",
+		"SpectrumUtilitiesModInitializerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
